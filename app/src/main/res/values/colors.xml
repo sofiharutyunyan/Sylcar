@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#182234</color>
+    <color name="colorPrimaryDark">#182234</color>
+    <color name="colorAccent">#f9f7f7</color>
+    <color name="registration_bg">#1b48aa</color>
+    <color name="proceed_btn_bg">#f2a81e</color>
+    <color name="proceed_deactive_text">#f5bf43</color>
+    <color name="trouble_msg">#7f8590</color>
+</resources>

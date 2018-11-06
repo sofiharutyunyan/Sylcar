@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Sylcar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="b2b_marketplace_solutions">B2B Marketplace Solutions</string>
+    <string name="prompt_log_in">Log in</string>
+    <string name="join_as_individual">Join as individual</string>
+    <string name="prompt_sign_up_as_business">Sign up as business</string>
+    <string name="proceed">Proceed</string>
+    <string name="log_into_sylkar">Log into SYLKAR</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="error_msg_log_in">Email or password is incorrect. Please try again.</string>
+    <string name="trouble_msg">Having troubles with login?</string>
+    <string name="register_account">Register your \nindividual account</string>
+    <string name="enter_first_name">Enter your first name</string>
+    <string name="enter_last_name">Enter your last name</string>
+    <string name="enter_email">Enter your email</string>
+    <string name="enter_phone_number">Enter your phone number</string>
+    <string name="enter_password">Enter your password</string>
+    <string name="error_msg_valid_fields">Please feel all fields valid.</string>
+    <string name="back">Back</string>
+    <string name="buyer_account">Buyer \nAccount</string>
+    <string name="buyer_placeholder">Placeholder for copy to let \nuser know why he needs to \ncreate buyer user account.</string>
+    <string name="prompt_sign_up">Sign up</string>
+    <string name="seller_account">Seller \nAccount</string>
+    <string name="seller_placeholder">Placeholder for copy to let \nuser know why he needs to \ncreate seller user account.</string>
+    <string name="affiliate_account">Affiliate \nAccount</string>
+    <string name="affiliate_placeholder">Placeholder for copy to let \nuser know why he needs to \ncreate affiliate user account.</string>
+    <string name="skip">Skip</string>
+    <string name="done">Done</string>
+    <string name="tap_here_to_add_your_photo">Tap here to add your photo</string>
+    <string name="gender">Gender:</string>
+    <string name="birthday">Birthday:</string>
+    <string name="congratulation_msg">Congratulations, you have logged in successfully.</string>
+</resources>
