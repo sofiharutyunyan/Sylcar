@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sofi.sylcar.R;
-import com.example.sofi.sylcar.presenter.RegistrationSecondPagePresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +22,7 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegistrationSecondPageView extends Fragment implements RegistrationSecondPagePresenter.IRegistrationPresenter{
+public class RegistrationSecondPageView extends Fragment{
 
     @BindView(R.id.birthday_edt) EditText edtBirthday;
     @BindView(R.id.skip_txt) TextView mTxtSkip;
@@ -31,7 +30,6 @@ public class RegistrationSecondPageView extends Fragment implements Registration
     @BindView(R.id.add_field_button) ImageButton mBtnAddField;
     @BindView(R.id.delete_button) ImageButton mBtnDelete;
 
-    private RegistrationSecondPagePresenter mPresenter;
 
     private Unbinder unbinder;
 
@@ -52,7 +50,7 @@ public class RegistrationSecondPageView extends Fragment implements Registration
 
     @OnClick(R.id.skip_txt)
     void skipCurrentFragment(){
-        mPresenter.skipRegisterFragment();
+        skipFragment();
     }
 
     @OnClick(R.id.add_field_button)
@@ -74,7 +72,7 @@ public class RegistrationSecondPageView extends Fragment implements Registration
      * @param v
      */
     void deleteEmail(View v){
-        mPresenter.deleteAddedEmail(v);
+        deleteEmailItem(v);
     }
 
     @Override
@@ -83,8 +81,6 @@ public class RegistrationSecondPageView extends Fragment implements Registration
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registration_second_page_view, container, false);
         unbinder = ButterKnife.bind(this, view);
-
-        mPresenter = new RegistrationSecondPagePresenter(this);
 
         mBtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,12 +98,10 @@ public class RegistrationSecondPageView extends Fragment implements Registration
         unbinder.unbind();
     }
 
-    @Override
     public void skipFragment() {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.start_container, RegistrationFirstPageView.newInstance()).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.start_container, new RegistrationFirstPageView()).commit();
     }
 
-    @Override
     public void deleteEmailItem(View v) {
         parentLL.removeView((View) v.getParent());
     }

@@ -1,10 +1,9 @@
 package com.example.sofi.sylcar.utils;
 
 
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.app.Activity;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class Validation {
 
@@ -18,4 +17,18 @@ public class Validation {
         return false;
     }
 
+    /**
+     * hides the open keyboard
+     * @param activity
+     */
+    public static void hideKeyboard (Activity activity){
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 }

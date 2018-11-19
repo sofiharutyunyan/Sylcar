@@ -4,12 +4,12 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
-    <data>
+    <!--<data>-->
 
-        <variable
-            name="viewModel"
-            type="com.example.sofi.sylcar.mvvm.model.viewmodel.LoginViewModel" />
-    </data>
+        <!--<variable-->
+            <!--name="viewModel"-->
+            <!--type="com.example.sofi.sylcar.mvvm.model.viewmodel.RegistrationViewModel" />-->
+    <!--</data>-->
 
     <RelativeLayout
         android:id="@+id/rvLay"
@@ -60,7 +60,8 @@
                     android:hint="@string/enter_your_email"
                     android:inputType="textEmailAddress"
                     android:textColor="@android:color/white"
-                    app:addTextChangedListener="@{viewModel.getEmailTextWatcher}" />
+                    />
+                <!--app:addTextChangedListener="@{viewModel.getEmailTextWatcher}"-->
 
             </android.support.design.widget.TextInputLayout>
 
@@ -79,8 +80,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_your_password"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/white"
-                    app:addTextChangedListener="@{viewModel.getPasswordTextWatcher}" />
+                    android:textColor="@android:color/white"/>
+                    <!--app:addTextChangedListener="@{viewModel.getPasswordTextWatcher}"-->
 
             </android.support.design.widget.TextInputLayout>
 
@@ -129,9 +130,10 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:background="@color/proceed_btn_bg"
-            android:onClick="@{viewModel::onLoginClicked}"
             android:text="@string/proceed"
             android:textColor="@color/proceed_deactive_text" />
+        <!--android:onClick="@{viewModel::onLoginClicked}"-->
+
 
     </RelativeLayout>
 

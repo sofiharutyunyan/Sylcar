@@ -4,23 +4,23 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.example.sofi.sylcar.mvvm.LoginResultCallBack;
+import com.example.sofi.sylcar.mvvm.RegistrationResultCallBack;
 
 
 /**
  * Created by sofi on 11/19/18.
  */
 
-public class LoginViewModelFactory extends ViewModelProvider.NewInstanceFactory {
+public class RegistrationViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
-    LoginResultCallBack mLoginCallBack;
+    RegistrationResultCallBack mLoginCallBack;
 
-    public LoginViewModelFactory(LoginResultCallBack mLoginCallBack) {
+    public RegistrationViewModelFactory(RegistrationResultCallBack mLoginCallBack) {
         this.mLoginCallBack = mLoginCallBack;
     }
 
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new LoginViewModel(mLoginCallBack);
+        return (T) new RegistrationViewModel(mLoginCallBack);
     }
 }

@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.sofi.sylcar.R;
-import com.example.sofi.sylcar.presenter.BusinessFragmentPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,11 +18,10 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SignUpAsBusinessFragment extends Fragment implements BusinessFragmentPresenter.IBusinessPresenter{
+public class SignUpAsBusinessFragment extends Fragment {
 
     @BindView(R.id.back_txt) TextView txtBack;
     private Unbinder unbinder;
-    private BusinessFragmentPresenter mPresenter;
 
     public SignUpAsBusinessFragment() {
         // Required empty public constructor
@@ -46,13 +44,12 @@ public class SignUpAsBusinessFragment extends Fragment implements BusinessFragme
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_up_as_business, container, false);
         unbinder = ButterKnife.bind(this, view);
-        mPresenter = new BusinessFragmentPresenter(this);
         return view;
     }
 
     @OnClick(R.id.back_txt)
     void goPreviousFragment(){
-        mPresenter.goPreviousFragment();
+        goBack();
     }
 
     @Override
@@ -61,7 +58,6 @@ public class SignUpAsBusinessFragment extends Fragment implements BusinessFragme
         unbinder.unbind();
     }
 
-    @Override
     public void goBack() {
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.start_container, LuncherFragment.newInstance()).commit();
     }

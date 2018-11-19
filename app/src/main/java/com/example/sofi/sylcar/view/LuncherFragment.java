@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.sofi.sylcar.R;
-import com.example.sofi.sylcar.presenter.LuncherFragmentPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,13 +19,12 @@ import butterknife.Unbinder;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LuncherFragment extends Fragment implements LuncherFragmentPresenter.IPresenter{
+public class LuncherFragment extends Fragment{
 
     @BindView(R.id.login_btn) TextView btnLogin;
     @BindView(R.id.individual_login_btn) TextView btnIndividualLogin;
     @BindView(R.id.signup_business_btn) TextView btnSignUpBusiness;
 
-    private LuncherFragmentPresenter mPresenter;
     private Unbinder unbinder;
 
     public LuncherFragment() {
@@ -51,38 +49,34 @@ public class LuncherFragment extends Fragment implements LuncherFragmentPresente
         View view = inflater.inflate(R.layout.fragment_luncher, container, false);
 
         unbinder = ButterKnife.bind(this, view);
-        mPresenter = new LuncherFragmentPresenter(this);
         return view;
     }
 
     @OnClick(R.id.login_btn)
     void login(){
-        mPresenter.startLogin();
+        startLogin();
     }
 
     @OnClick(R.id.individual_login_btn)
     void loginAsIndividual(){
-        mPresenter.startIndividualLogin();
+        startIndividualLogin();
     }
 
     @OnClick(R.id.signup_business_btn)
     void signUpAsBusiness(){
-        mPresenter.signUpAsIndividual();
+        signUpAsIndividual();
     }
 
-    @Override
     public void startLogin() {
         btnLogin.setBackgroundColor(getResources().getColor(R.color.proceed_btn_bg));
         openFragment(new LoginFragmentView());
     }
 
-    @Override
     public void startIndividualLogin() {
         btnIndividualLogin.setBackgroundColor(getResources().getColor(R.color.proceed_btn_bg));
-        openFragment(RegistrationFirstPageView.newInstance());
+        openFragment(new RegistrationFirstPageView());
     }
 
-    @Override
     public void signUpAsIndividual() {
         btnSignUpBusiness.setBackgroundColor(getResources().getColor(R.color.proceed_btn_bg));
         openFragment(SignUpAsBusinessFragment.newInstance());
