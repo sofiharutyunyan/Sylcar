@@ -73,7 +73,7 @@ public class LuncherFragment extends Fragment implements LuncherFragmentPresente
     @Override
     public void startLogin() {
         btnLogin.setBackgroundColor(getResources().getColor(R.color.proceed_btn_bg));
-        openFragment(LoginFragmentView.newInstance());
+        openFragment(new LoginFragmentView());
     }
 
     @Override
