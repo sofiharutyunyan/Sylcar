@@ -59,6 +59,6 @@ public class SignUpAsBusinessFragment extends Fragment {
     }
 
     public void goBack() {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.start_container, LuncherFragment.newInstance()).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.nav_host_fragment, new LauncherFragment()).commit();
     }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/launcherFragment">
+
+    <fragment
+        android:id="@+id/launcherFragment"
+        android:name="com.example.sofi.sylcar.view.LauncherFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/fragment_launcher" >
+        <action
+            android:id="@+id/action_launcherFragment_to_loginFragmentView"
+            app:destination="@id/loginFragmentView" />
+        <action
+            android:id="@+id/action_launcherFragment_to_registrationFirstPageView"
+            app:destination="@id/registrationFirstPageView" />
+        <action
+            android:id="@+id/action_launcherFragment_to_signUpAsBusinessFragment"
+            app:destination="@id/signUpAsBusinessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragmentView"
+        android:name="com.example.sofi.sylcar.view.LoginFragmentView"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" ></fragment>
+    <fragment
+        android:id="@+id/registrationFirstPageView"
+        android:name="com.example.sofi.sylcar.view.RegistrationFirstPageView"
+        android:label="fragment_registration_first_page_view"
+        tools:layout="@layout/fragment_registration_first_page_view" >
+        <action
+            android:id="@+id/action_registrationFirstPageView_to_registrationSecondPageView4"
+            app:destination="@id/registrationSecondPageView" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpAsBusinessFragment"
+        android:name="com.example.sofi.sylcar.view.SignUpAsBusinessFragment"
+        android:label="fragment_sign_up_as_business"
+        tools:layout="@layout/fragment_sign_up_as_business" />
+    <fragment
+        android:id="@+id/registrationSecondPageView"
+        android:name="com.example.sofi.sylcar.view.RegistrationSecondPageView"
+        android:label="fragment_registration_second_page_view"
+        tools:layout="@layout/fragment_registration_second_page_view" >
+        <deepLink app:uri="www.facebook.com" android:autoVerify="true"/></fragment>
+</navigation>

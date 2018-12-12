@@ -1,10 +1,8 @@
 package com.example.sofi.sylcar.view;
 
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -21,7 +19,6 @@ import com.example.sofi.sylcar.R;
 import com.example.sofi.sylcar.databinding.FragmentLoginBinding;
 import com.example.sofi.sylcar.mvvm.RegistrationResultCallBack;
 import com.example.sofi.sylcar.mvvm.model.viewmodel.RegistrationViewModel;
-import com.example.sofi.sylcar.mvvm.model.viewmodel.RegistrationViewModelFactory;
 import com.example.sofi.sylcar.utils.Validation;
 
 import butterknife.BindView;
@@ -33,7 +30,7 @@ import butterknife.Unbinder;
  * A simple {@link Fragment} subclass.
  */
 
-public class LoginFragmentView extends Fragment {
+public class LoginFragmentView extends Fragment implements RegistrationResultCallBack {
 
 
     @BindView(R.id.email_lay)
@@ -50,6 +47,8 @@ public class LoginFragmentView extends Fragment {
     ImageButton imgBack;
 
     private Unbinder unbinder;
+
+    private FragmentLoginBinding binding;
 
     public LoginFragmentView() {
         // Required empty public constructor
@@ -77,9 +76,11 @@ public class LoginFragmentView extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        return view;
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
+        binding.setViewModel(new RegistrationViewModel(this));
+
+        unbinder = ButterKnife.bind(this, binding.getRoot());
+        return binding.getRoot();
     }
 
     @OnClick(R.id.proceed_btn)
@@ -91,13 +92,6 @@ public class LoginFragmentView extends Fragment {
         }
     }
 
-    @OnClick(R.id.back_img)
-    void goBack() {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.start_container, LuncherFragment.newInstance()).commit();
-
-
-    }
-
     public void loginUser() {
         layError.setVisibility(View.GONE);
         Toast.makeText(getContext(), R.string.congratulation_msg, Toast.LENGTH_SHORT).show();
@@ -107,5 +101,15 @@ public class LoginFragmentView extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onSuccess(String message) {
+
+    }
+
+    @Override
+    public void onError(String message) {
+
     }
 }

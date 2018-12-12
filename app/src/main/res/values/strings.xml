@@ -34,4 +34,7 @@
     <string name="gender">Gender:</string>
     <string name="birthday">Birthday:</string>
     <string name="congratulation_msg">Congratulations, you have logged in successfully.</string>
+    <string name="description">Description</string>
+    <string name="add_email">Add.email:</string>
+    <string name="your_avatar">Your avatar</string>
 </resources>

@@ -23,4 +23,5 @@ public class RegistrationViewModelFactory extends ViewModelProvider.NewInstanceF
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         return (T) new RegistrationViewModel(mLoginCallBack);
     }
+
 }

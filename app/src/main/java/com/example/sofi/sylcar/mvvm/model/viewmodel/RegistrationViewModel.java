@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 
 import com.example.sofi.sylcar.mvvm.RegistrationResultCallBack;
@@ -16,9 +17,13 @@ import com.example.sofi.sylcar.mvvm.model.User;
 
 public class RegistrationViewModel extends ViewModel {
 
-    MutableLiveData<User> mutableLiveData;
+    private MutableLiveData<User> mutableLiveData;
     private User mUser;
     private RegistrationResultCallBack mLoginCallback;
+
+    public RegistrationViewModel() {
+        this.mUser = new User();
+    }
 
     public RegistrationViewModel(RegistrationResultCallBack mLoginCallback) {
         this.mLoginCallback = mLoginCallback;
@@ -32,6 +37,10 @@ public class RegistrationViewModel extends ViewModel {
         return mutableLiveData;
     }
 
+    private void setUser(){
+
+    }
+
     //  Method to get first name from EditText and set to user
     public TextWatcher getFirstNameTextWatcher() {
         return new TextWatcher() {
@@ -42,7 +51,7 @@ public class RegistrationViewModel extends ViewModel {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                Log.e("tag", s.toString());
             }
 
             @Override

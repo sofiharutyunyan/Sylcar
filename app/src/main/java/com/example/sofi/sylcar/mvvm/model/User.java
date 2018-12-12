@@ -1,9 +1,15 @@
 package com.example.sofi.sylcar.mvvm.model;
 
 import android.databinding.BaseObservable;
+import android.databinding.BindingAdapter;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by sofi on 11/16/18.
@@ -13,16 +19,18 @@ public class User extends BaseObservable {
 
     @NonNull
     private String firstName, lastName, phoneNum, email, password;
+    public String avatarUri;
 
     public User() {
     }
 
-    public User(@NonNull String firstName, @NonNull String lastName, @NonNull String phoneNum, @NonNull String email, @NonNull String password) {
+    public User(@NonNull String firstName, @NonNull String lastName, @NonNull String phoneNum, @NonNull String email, @NonNull String password, String avatarUri) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNum = phoneNum;
         this.email = email;
         this.password = password;
+        this.avatarUri = avatarUri;
     }
 
     @NonNull
@@ -68,6 +76,19 @@ public class User extends BaseObservable {
 
     public void setPassword(@NonNull String password) {
         this.password = password;
+    }
+
+    public String getAvatarUri() {
+        return avatarUri;
+    }
+
+    public void setAvatarUri(String avatarUri) {
+        this.avatarUri = avatarUri;
+    }
+
+    @BindingAdapter({"app:url", "app:errorImage"})
+    public static void loadImage(ImageView view, String url, Drawable errorImage) {
+        Picasso.get().load(url).error(errorImage).into(view);
     }
 
     /**

@@ -16,70 +16,38 @@ import com.example.sofi.sylcar.mvvm.model.viewmodel.RegistrationViewModel;
 import com.example.sofi.sylcar.mvvm.model.viewmodel.RegistrationViewModelFactory;
 import com.example.sofi.sylcar.utils.Validation;
 
+import androidx.navigation.Navigation;
 import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class RegistrationFirstPageView extends Fragment implements RegistrationResultCallBack {
-//
-//    @BindView(R.id.first_name_txt)
-//    TextInputEditText mTxtFirstName;
-//    @BindView(R.id.last_name_txt)
-//    TextInputEditText mTxtLasttName;
-//    @BindView(R.id.email_txt)
-//    TextInputEditText mtxtEmail;
-//    @BindView(R.id.phone_num_txt)
-//    TextInputEditText mtxtPhonNum;
-//    @BindView(R.id.password_register_txt)
-//    TextInputEditText mtxtPassword;
-//    @BindView(R.id.proceed_register_btn)
-//    Button mBtnProceed;
-//    @BindView(R.id.back_from_register_img)
-//    ImageButton mImgBack;
-//
-//    private Unbinder unbinder;
 
-    @OnClick(R.id.proceed_register_btn)
-    void onClickProceed() {
-        Validation.hideKeyboard(getActivity());
-    }
-
-    @OnClick(R.id.back_from_register_img)
-    void goBack() {
-        Validation.hideKeyboard(getActivity());
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.start_container, LuncherFragment.newInstance()).commit();
-    }
+    private FragmentRegistrationFirstPageViewBinding viewBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_registration_first_page_view, container, false);
-        FragmentRegistrationFirstPageViewBinding viewBinding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_registration_first_page_view);
+        viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_registration_first_page_view, container, false);
+        RegistrationViewModel firstVM = ViewModelProviders.of(this).get(RegistrationViewModel.class);
+        firstVM.getData().observe(this, users -> {
+            Toast.makeText(getContext(), users.getFirstName(), Toast.LENGTH_SHORT).show();
+        }) ;
         viewBinding.setViewModelRegistr(ViewModelProviders.of(this, new RegistrationViewModelFactory(this))
                 .get(RegistrationViewModel.class));
-//        unbinder = ButterKnife.bind(this, view);
 
-        return view;
+        return viewBinding.getRoot();
     }
-
-
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        unbinder.unbind();
-//    }
 
     @Override
     public void onSuccess(String message) {
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.start_container,
-                RegistrationSecondPageView.newInstance()).addToBackStack(null).commit();
-        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        Navigation.findNavController(viewBinding.getRoot()).navigate(R.id.action_registrationFirstPageView_to_registrationSecondPageView4);
     }
 
     @Override
     public void onError(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
+
 }
